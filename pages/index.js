@@ -1,22 +1,15 @@
 import Head from 'next/head';
-import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
-import { deleteTrack, getTracks } from "../lib/firebase";
+import React, { useEffect } from 'react'; 
+import { getTracks } from "../lib/firebase";
 import Header from '@/components/header';
 import SearchTrackBox from '@/components/search-track-box';
+import TrackList from '@/components/track-list';
 
 
-export default function Home() {
-  const { user } = useSelector(((state) => state.auth));
+export default function Home() { 
   const [tracks, setTracks] = React.useState([]);
   const [playTrack, setPlayTrack] = React.useState(null);
-
-
-  const removeTrack = async (track) => {
-    let control = await deleteTrack(track, user);
-    if (control) await listTracks();
-  };
-
+ 
   const listTracks = React.useCallback(async () => {
     let data = await getTracks();
     setTracks(data);
@@ -35,31 +28,8 @@ export default function Home() {
       <main className='h-screen'>
         <div className='max-w-lg m-auto mt-20 relative'>
           <Header />
-          <SearchTrackBox {...{ playTrack }} />
-          <div>
-            {tracks && tracks.map((x, i) => {
-              let item = x.track;
-
-              return <div key={item.id} className="flex py-2 justify-between ">
-                <div className='flex space-x-3'>
-                  <div>
-                    <img src={item.image} className="w-10 h-10" />
-                  </div>
-                  <div className=''>
-                    <div className='text-gray-800 text-sm'>{item.title}</div>
-                    <div className='text-gray-400 text-xs'>{item.artist}</div>
-                  </div>
-                </div>
-                <div className='flex justify-center items-center space-x-4'>
-                  {playTrack !== item.preview_url && <button onClick={() => setPlayTrack(item.preview_url)}> Başlat </button>}
-                  {playTrack === item.preview_url && <button onClick={() => setPlayTrack(null)}> Durdur </button>}
-                  <div>{item.duration}</div>
-                  {user.uid === x.user.uid &&
-                    <button onClick={() => removeTrack(item)}>-</button>}
-                </div>
-              </div>
-            })}
-          </div>
+          <SearchTrackBox {...{ listTracks, playTrack, setPlayTrack }} />
+          <TrackList {...{ tracks, listTracks, playTrack, setPlayTrack }} />
         </div>
       </main>
     </>

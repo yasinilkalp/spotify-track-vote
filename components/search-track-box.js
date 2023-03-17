@@ -5,7 +5,7 @@ import { addTrack } from "../lib/firebase";
 import ReactAudioPlayer from 'react-audio-player';
 
 const SearchTrackBox = (props) => {
-    const { playTrack } = props;
+    const { listTracks, playTrack, setPlayTrack } = props;
     const { user } = useSelector(((state) => state.auth));
     const [loading, setLoading] = React.useState(false);
     const [searchTracks, setSearchTracks] = React.useState([]);
