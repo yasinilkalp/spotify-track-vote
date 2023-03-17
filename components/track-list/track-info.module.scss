@@ -1,0 +1,23 @@
+.trackInfo{
+    @apply grow;
+
+    .trackTitle{
+        @apply text-gray-800 text-sm truncate;
+    }
+
+    .trackArtist{
+        @apply text-gray-400 text-xs;
+    }
+
+    .trackInfoUser{
+        @apply mt-1 flex items-center;
+    }
+
+    .trackUserImage{
+        @apply w-4 h-4 rounded-sm shadow-sm mr-1;
+    }
+
+    .trackUserName{
+        @apply text-xs text-gray-500;
+    }
+}

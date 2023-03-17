@@ -29,7 +29,7 @@ const SearchTrackBox = (props) => {
     };
 
     return <>
-        <input type="text" className='border h-12 rounded-xl w-full px-6' placeholder='Ne dinlemek istiyorsun?' onChange={onChange} />
+        <input type="text" className='border h-14 rounded-md w-full px-6' placeholder='Ne dinlemek istiyorsun?' onChange={onChange} />
         {playTrack && <ReactAudioPlayer src={playTrack} autoPlay="auto" />}
         {loading && <div>Yükleniyor...</div>}
         {searchTracks && searchTracks.length > 0 && !loading &&

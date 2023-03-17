@@ -26,7 +26,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='h-screen'>
-        <div className='max-w-lg m-auto mt-20 relative'>
+        <div className='max-w-xl m-auto mt-10 relative px-4 lg:px-0'>
           <Header />
           <SearchTrackBox {...{ listTracks, playTrack, setPlayTrack }} />
           <TrackList {...{ tracks, listTracks, playTrack, setPlayTrack }} />

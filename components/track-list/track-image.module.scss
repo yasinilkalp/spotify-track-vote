@@ -1,0 +1,29 @@
+.trackImageContent {
+    @apply flex-none w-14 mr-3 relative;
+
+    &:hover {
+        .trackAudio {
+            @apply block;
+        }
+    }
+
+    .trackAudio {
+        @apply hidden cursor-pointer absolute w-full h-full;
+
+        &.played {
+            display: block !important;
+        }
+
+        .trackBackdrop {
+            @apply absolute z-0 w-full h-full bg-black opacity-70;
+        }
+
+        .trackAudioControl {
+            @apply absolute z-10 w-full h-full flex justify-center items-center;
+        }
+    }
+
+    .trackImage {
+        @apply w-14 h-14 rounded-sm;
+    }
+}
