@@ -1,8 +1,8 @@
 .trackInfo{
-    @apply grow;
+    @apply flex flex-col justify-between;
 
     .trackTitle{
-        @apply text-gray-800 text-sm truncate;
+        @apply text-gray-800 text-sm truncate w-2/3 sm:w-full;
     }
 
     .trackArtist{

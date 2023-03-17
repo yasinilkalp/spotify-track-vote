@@ -1,16 +1,23 @@
 .trackVoteContent {
-    @apply flex w-14 justify-center items-center space-x-3;
+    @apply flex justify-center items-center space-x-3 relative;
 
     .trackVote {
         @apply flex flex-col px-3 mr-1 py-1 text-center items-center justify-center border rounded-md;
 
-        img{
+        img {
             @apply w-6 -mb-1;
         }
 
-        span{
+        span {
             @apply text-sm;
         }
- 
+
+    }
+}
+
+.removeTrack {
+    @apply absolute -left-8;
+    img {
+        @apply w-6;
     }
 }

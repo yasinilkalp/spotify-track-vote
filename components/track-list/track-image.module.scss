@@ -1,5 +1,5 @@
 .trackImageContent {
-    @apply flex-none w-14 mr-3 relative;
+    @apply flex-none w-14 h-14 mr-3 relative;
 
     &:hover {
         .trackAudio {
@@ -24,6 +24,6 @@
     }
 
     .trackImage {
-        @apply w-14 h-14 rounded-sm;
+        @apply w-full h-full rounded-sm;
     }
 }

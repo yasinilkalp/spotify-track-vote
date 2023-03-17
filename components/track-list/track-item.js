@@ -1,24 +1,16 @@
-import { useSelector } from "react-redux";
-import { deleteTrack } from "../../lib/firebase";
 import TrackImage from "./track-image";
 import TrackInfo from "./track-info";
 import TrackVote from "./track-vote";
 
 const TrackItem = (props) => {
     const { item, playTrack, setPlayTrack, listTracks } = props;
-    const { user } = useSelector(((state) => state.auth));
-
-    const removeTrack = async (track) => {
-        let control = await deleteTrack(track, user);
-        if (control) await listTracks();
-    };
-
-    return <div key={item.track.id} className="flex justify-between bg-white border rounded-md p-3 mt-2">
+ 
+    return <div key={item.track.id} className="flex justify-between bg-white border rounded-md p-3 mt-2 overflow-hidden">
         <div className="flex">
             <TrackImage {...{ item, playTrack, setPlayTrack }} />
             <TrackInfo {...{ item }} />
         </div>
-        <TrackVote {...{ item }} />
+        <TrackVote {...{ item, listTracks }} /> 
     </div>
 
     // return <div key={item.track.id} className="flex py-2 justify-between ">
@@ -40,8 +32,7 @@ const TrackItem = (props) => {
     //         {playTrack !== item.track.preview_url && <button onClick={() => setPlayTrack(item.track.preview_url)}> Başlat </button>}
     //         {playTrack === item.track.preview_url && <button onClick={() => setPlayTrack(null)}> Durdur </button>}
     //         <div>{item.track.duration}</div>
-    //         {user.uid === item.user.uid &&
-    //             <button onClick={() => removeTrack(item)}>-</button>}
+    //         {user.uid === item.user.uid &&  <button onClick={() => removeTrack(item)}>-</button>}
     //     </div>
     // </div>
 };
