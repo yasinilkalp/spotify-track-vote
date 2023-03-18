@@ -3,7 +3,7 @@ import { Tooltip } from "@mui/material";
 const TrackVoteUsers = (props) => {
     const { item, index } = props;
     return <div className={`vote-users border-t px-4 py-2 flex items-center ${index < 3 ? "justify-between" : "justify-end"}`}>
-        {index < 3 && <span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">
+        {index < 3 && <span className="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">
             {index + 1}
         </span>
         }
