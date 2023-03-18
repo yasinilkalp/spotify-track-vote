@@ -1,6 +1,6 @@
 const Logo = () => {
     return <div className='flex items-center'>
-        <img src="logo.svg" />
+        <img src="svg/logo.svg" />
     </div>
 };
 

@@ -37,12 +37,13 @@ const TrackSearch = (props) => {
 
     return <>
         <div className='relative'>
+            <img src='svg/spotify.svg' className=' absolute z-50 left-4 top-3 w-8 stroke-gray-800' />
             <input type="text"
-                className='border relative z-40 h-14 rounded-md w-full px-6'
+                className='border relative z-40 h-14 rounded-md w-full px-6 pl-14'
                 placeholder='Ne dinlemek istiyorsun?' onChange={onChange} />
             {playTrack && <ReactAudioPlayer src={playTrack} autoPlay="auto" />}
             {loading && <div className='absolute z-50 right-1 top-1'>
-                <img src='loading.svg' className='w-12' />
+                <img src='svg/loading.svg' className='w-12' />
             </div>}
         </div>
         {searchTracks && searchTracks.length > 0 &&
@@ -61,7 +62,7 @@ const TrackSearch = (props) => {
                             <div className='flex justify-center items-center space-x-4'>
                                 {user.uid &&
                                     <button onClick={() => insertTrack(item)}>
-                                        <img src='square-plus.svg' />
+                                        <img src='svg/square-plus.svg' />
                                     </button>}
                             </div>
                         </div>

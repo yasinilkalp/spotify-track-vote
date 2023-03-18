@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../../toolkit/slices/authSlice";
 import { signIn } from "../../lib/firebase";
+import { Tooltip } from "@mui/material";
 
 const AuthGoogle = () => {
     const dispatch = useDispatch();
@@ -22,7 +23,9 @@ const AuthGoogle = () => {
                     <div className='text-gray-500 text-xs'>{user.email}</div>
                 </div>
                 <button onClick={onLogout} className="bg-white w-10">
-                    <img src="close.svg" className="w-10" />
+                    <Tooltip title="Çıkış Yap">
+                        <img src="svg/close.svg" className="w-10" />
+                    </Tooltip>
                 </button>
             </div>}</>
 };

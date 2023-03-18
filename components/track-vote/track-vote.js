@@ -19,10 +19,10 @@ const TrackVote = (props) => {
     return <div className={styles.trackVoteContent}>
         {user.uid === item.user.uid &&
             <button onClick={() => removeTrack(item.track)} className={styles.removeTrack}>
-                <img src="trash.svg" />
+                <img src="svg/trash.svg" />
             </button>}
         <button className={`${styles.trackVote} ${styles.trackVoteUp}`} onClick={toVote}>
-            <img src="chevron-up.svg" />
+            <img src="svg/chevron-up.svg" />
             <span>{item.votes.length}</span>
         </button>
     </div>

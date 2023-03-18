@@ -9,11 +9,11 @@ const TrackImage = (props) => {
             <div className={styles.trackAudioControl}>
                 {playTrack !== track.preview_url &&
                     <button onClick={() => setPlayTrack(track.preview_url)}>
-                        <img src="play.svg" />
+                        <img src="svg/play.svg" />
                     </button>}
                 {playTrack === track.preview_url &&
                     <button onClick={() => setPlayTrack(null)}>
-                        <img src="pause.svg" />
+                        <img src="svg/pause.svg" />
                     </button>}
             </div>
         </div>
