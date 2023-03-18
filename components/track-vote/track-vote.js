@@ -1,5 +1,5 @@
 import styles from "./track-vote.module.scss";
-import { deleteTrack } from "../../lib/firebase";
+import { deleteTrack, voteTrack } from "../../lib/firebase";
 import { useSelector } from "react-redux";
 
 const TrackVote = (props) => {
@@ -11,15 +11,20 @@ const TrackVote = (props) => {
         if (control) await listTracks();
     };
 
+    const toVote = async () => {
+        let control = await voteTrack(item.track, user);
+        if (control) await listTracks();
+    };
+
     return <div className={styles.trackVoteContent}>
         {user.uid === item.user.uid &&
             <button onClick={() => removeTrack(item.track)} className={styles.removeTrack}>
                 <img src="trash.svg" />
             </button>}
-        <div className={`${styles.trackVote} ${styles.trackVoteUp}`}>
+        <button className={`${styles.trackVote} ${styles.trackVoteUp}`} onClick={toVote}>
             <img src="chevron-up.svg" />
-            <span>45</span>
-        </div>
+            <span>{item.votes.length}</span>
+        </button>
     </div>
 };
 

@@ -5,9 +5,9 @@ const TrackList = (props) => {
     const { tracks, playTrack, setPlayTrack, listTracks } = props;
 
     return <div>
-        {tracks && tracks.map((item, i) => {
-            return <Fragment key={i}>
-                <TrackItem {...{ item, playTrack, setPlayTrack, listTracks }} />
+        {tracks && tracks.map((item, index) => {
+            return <Fragment key={index}>
+                <TrackItem {...{ item, index, playTrack, setPlayTrack, listTracks }} />
             </Fragment>
         })}
     </div>

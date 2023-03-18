@@ -1,40 +1,21 @@
+import TrackVoteUsers from "../track-vote/track-vote-users";
 import TrackImage from "./track-image";
 import TrackInfo from "./track-info";
-import TrackVote from "./track-vote";
+import TrackVote from "../track-vote/track-vote";
 
 const TrackItem = (props) => {
-    const { item, playTrack, setPlayTrack, listTracks } = props;
- 
-    return <div key={item.track.id} className="flex justify-between bg-white border rounded-md p-3 mt-2 overflow-hidden">
-        <div className="flex">
-            <TrackImage {...{ item, playTrack, setPlayTrack }} />
-            <TrackInfo {...{ item }} />
-        </div>
-        <TrackVote {...{ item, listTracks }} /> 
-    </div>
+    const { item, index, playTrack, setPlayTrack, listTracks } = props;
 
-    // return <div key={item.track.id} className="flex py-2 justify-between ">
-    //     <div className='flex space-x-3'>
-    //         <div>
-    //             <img src={item.track.image} className="w-10 h-10" />
-    //         </div>
-    //         <div className='track-info'>
-    //             <div className='text-gray-800 text-sm'>{item.track.title}</div>
-    //             <div className='text-gray-400 text-xs'>{item.track.artist}</div>
-    //         </div>
-    //     </div>
-    //     <div className='flex space-x-3 items-center'>
-    //         <div>
-    //             <img src={item.user.photoURL} className="w-8 h-8 rounded-full" />
-    //         </div>
-    //     </div>
-    //     <div className='flex justify-center items-center space-x-4'>
-    //         {playTrack !== item.track.preview_url && <button onClick={() => setPlayTrack(item.track.preview_url)}> Başlat </button>}
-    //         {playTrack === item.track.preview_url && <button onClick={() => setPlayTrack(null)}> Durdur </button>}
-    //         <div>{item.track.duration}</div>
-    //         {user.uid === item.user.uid &&  <button onClick={() => removeTrack(item)}>-</button>}
-    //     </div>
-    // </div>
+    return <div key={item.track.id} className="bg-white border rounded-md mt-2 overflow-hidden">
+        <div className="flex justify-between p-3">
+            <div className="flex">
+                <TrackImage {...{ track: item.track, playTrack, setPlayTrack }} />
+                <TrackInfo {...{ track: item.track, user: item.user }} />
+            </div>
+            <TrackVote {...{ item, listTracks }} />
+        </div>
+        <TrackVoteUsers {...{ item, index }} />
+    </div>
 };
 
 export default TrackItem;

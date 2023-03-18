@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React, { useEffect } from 'react'; 
 import { getTracks } from "../lib/firebase";
-import Header from '@/components/header';
-import SearchTrackBox from '@/components/search-track-box';
-import TrackList from '@/components/track-list';
+import Header from '@/components/header'; 
+import TrackList from '@/components/track-list'; 
+import TrackSearch from '@/components/track-search';
 
 
 export default function Home() { 
@@ -28,7 +28,7 @@ export default function Home() {
       <main className='h-screen'>
         <div className='max-w-xl m-auto mt-10 relative px-4 lg:px-0'>
           <Header />
-          <SearchTrackBox {...{ listTracks, playTrack, setPlayTrack }} />
+          <TrackSearch {...{ listTracks, playTrack, setPlayTrack }} />
           <TrackList {...{ tracks, listTracks, playTrack, setPlayTrack }} />
         </div>
       </main>
