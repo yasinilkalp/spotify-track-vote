@@ -1,5 +1,5 @@
 .trackInfo{
-    @apply flex flex-col justify-between;
+    @apply flex flex-col justify-between w-full;
 
     .trackTitle{
         @apply text-gray-800 text-sm truncate w-2/3 sm:w-full;

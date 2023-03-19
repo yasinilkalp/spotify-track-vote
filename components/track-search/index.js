@@ -45,31 +45,32 @@ const TrackSearch = (props) => {
             {loading && <div className='absolute z-50 right-1 top-1'>
                 <img src='svg/loading.svg' className='w-12' />
             </div>}
+            {searchTracks && searchTracks.length > 0 &&
+                <>
+                    <div className='fixed bg-black opacity-40 w-full h-full left-0 top-0 z-30' onClick={() => {
+                        setSearchTracks(null);
+                        setPlayTrack(null);
+                    }} />
+                    <div className='absolute z-40 w-full divide-y bg-white mt-2 p-4 rounded-md border'>
+                        {searchTracks.map((item) => {
+                            return <div key={item.id} className="flex py-2 justify-between ">
+                                <div className='flex space-x-3 w-full'>
+                                    <TrackImage {...{ track: item, playTrack, setPlayTrack }} />
+                                    <TrackInfo {...{ track: item }} />
+                                </div>
+                                <div className='flex justify-center items-center space-x-4'>
+                                    {user.uid &&
+                                        <button onClick={() => insertTrack(item)}>
+                                            <img src='svg/square-plus.svg' />
+                                        </button>}
+                                </div>
+                            </div>
+                        })}
+                    </div>
+                </>
+            }
         </div>
-        {searchTracks && searchTracks.length > 0 &&
-            <>
-                <div className='fixed bg-black opacity-40 w-full h-full left-0 top-0 z-30' onClick={() => {
-                    setSearchTracks(null);
-                    setPlayTrack(null);
-                }} />
-                <div className='absolute z-40 w-full divide-y bg-white mt-2 p-4 rounded-md border'>
-                    {searchTracks.map((item) => {
-                        return <div key={item.id} className="flex py-2 justify-between ">
-                            <div className='flex space-x-3'>
-                                <TrackImage {...{ track: item, playTrack, setPlayTrack }} />
-                                <TrackInfo {...{ track: item }} />
-                            </div>
-                            <div className='flex justify-center items-center space-x-4'>
-                                {user.uid &&
-                                    <button onClick={() => insertTrack(item)}>
-                                        <img src='svg/square-plus.svg' />
-                                    </button>}
-                            </div>
-                        </div>
-                    })}
-                </div>
-            </>
-        }
+
     </>
 };
 
