@@ -17,7 +17,7 @@ const TrackSearch = (props) => {
     const onChange = async (e) => {
         if (e.target.value && e.target.value.length > 3) {
             setLoading(true);
-            var response = await axios.get('/api/search-tracks?keyword=' + e.target.value);
+            var response = await axios.get('/api/search-tracks?keyword=' + e.target.value+'&limit=5');
             if (response && response.status === 200) {
                 setSearchTracks(response.data.tracks);
             }
