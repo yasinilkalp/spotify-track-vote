@@ -5,6 +5,8 @@ import { addTrack } from "../../lib/firebase";
 import ReactAudioPlayer from 'react-audio-player';
 import TrackImage from '../track-list/track-image';
 import TrackInfo from '../track-list/track-info';
+import TrackSuggest from '../track-suggest';
+import Loading from '../loading';
 
 const TrackSearch = (props) => {
     const { listTracks, playTrack, setPlayTrack } = props;
@@ -37,14 +39,19 @@ const TrackSearch = (props) => {
 
     return <>
         <div className='relative'>
-            <img src='svg/spotify.svg' className=' absolute z-50 left-4 top-3 w-8 stroke-gray-800' />
-            <input type="text"
-                className='border relative z-40 h-14 rounded-md w-full px-6 pl-14'
-                placeholder='Ne dinlemek istiyorsun?' onChange={onChange} />
+            <div className='flex space-x-3'>
+                <div className='grow relative'>
+                    <img src='svg/spotify.svg' className=' absolute z-50 left-4 top-3 w-8 stroke-gray-800' />
+                    <input type="text"
+                        className='border relative z-40 h-14 rounded-md w-full px-6 pl-14'
+                        placeholder='Ne dinlemek istiyorsun?' onChange={onChange} />
+                    {loading && <Loading style="absolute z-50 right-1 top-1" />}
+                </div>
+                <TrackSuggest {...{ user, playTrack, setPlayTrack,insertTrack }} />
+            </div>
+
             {playTrack && <ReactAudioPlayer src={playTrack} autoPlay="auto" />}
-            {loading && <div className='absolute z-50 right-1 top-1'>
-                <img src='svg/loading.svg' className='w-12' />
-            </div>}
+
             {searchTracks && searchTracks.length > 0 &&
                 <>
                     <div className='fixed bg-black opacity-40 w-full h-full left-0 top-0 z-30' onClick={() => {
@@ -70,7 +77,6 @@ const TrackSearch = (props) => {
                 </>
             }
         </div>
-
     </>
 };
 

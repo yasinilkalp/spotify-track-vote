@@ -1,7 +1,7 @@
 import { searchTracks } from '../../lib/spotify';
 
 export default async (req, res) => {
-    const response = await searchTracks(req.query.keyword);
+    const response = await searchTracks(req.query.keyword, req.query.limit ?? 5);
     const { tracks: { items } } = await response.json();
 
     const tracks = items.slice(0, 10).map((track) => ({
