@@ -75,11 +75,6 @@ const moods = [{
     icon: 'svg/mood/sad.svg'
 },
 {
-    id: 'confuzed',
-    title: 'Karışık',
-    icon: 'svg/mood/confuzed.svg'
-},
-{
     id: 'cry',
     title: 'Ağlamaklı',
     icon: 'svg/mood/cry.svg'
