@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@firebase/app": "^0.9.5",
+    "@firebase/app": "^0.9.8",
     "@firebase/auth": "^0.21.5",
     "@mui/material": "^5.11.13",
     "@react-spring/web": "^9.7.1",
